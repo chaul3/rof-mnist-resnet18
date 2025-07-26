@@ -13,9 +13,6 @@ The authors propose categorizing units in a trained neural network by measuring 
   - Resize to 112×112
   - Convert to 3-channel grayscale
   - Convert to tensor
-- Subsets used:
-  - Train: 5,000 samples
-  - Test: 1,000 samples
 ## Model
 - Base model: `ResNet18`
 - Final fully connected (FC) layer modified:
@@ -34,17 +31,24 @@ Evaluation metric: classification accuracy
 Evaluation is performed on the 1k-sample test subset
 A baseline test accuracy is computed after training
 ## ROF via Feature Vector Masking
-Features from model.avgpool are extracted (before fc)
-L1-norm is computed per feature dimension
-Only top-K units are kept, others zero-masked
-Evaluated across all 512 units
-Accuracy and cross-entropy loss are measured
-Turning points are identified:
-n₀_acc: index of max accuracy
-n₀_loss: index of min loss
-Highly active unit sets:
-U₀_acc: units ranked up to n₀_acc
-U₀_loss: units ranked up to n₀_loss
+\begin{itemize}
+  \item Features are extracted from \texttt{model.avgpool} (before the fully connected layer).
+  \item The L1-norm is computed across each feature dimension.
+  \item Only the top-$K$ units (based on L1-norm) are retained; all others are zero-masked.
+  \item Evaluation is conducted over all 512 units.
+  \item For each subset of active units, accuracy and cross-entropy loss are measured.
+  \item Turning points are identified:
+    \begin{itemize}
+      \item $n_0^{\text{acc}}$: Index where accuracy reaches maximum.
+      \item $n_0^{\text{loss}}$: Index where loss reaches minimum.
+    \end{itemize}
+  \item Highly active unit sets are defined as:
+    \begin{itemize}
+      \item $\mathcal{U}_0^{\text{acc}}$: Units ranked up to $n_0^{\text{acc}}$.
+      \item $\mathcal{U}_0^{\text{loss}}$: Units ranked up to $n_0^{\text{loss}}$.
+    \end{itemize}
+\end{itemize}
+
 
 ## Visualizations
 Plots:
