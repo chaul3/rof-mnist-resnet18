@@ -31,25 +31,18 @@ Evaluation metric: classification accuracy
 Evaluation is performed on the 1k-sample test subset
 A baseline test accuracy is computed after training
 ## ROF via Feature Vector Masking
-\begin{itemize}
-  \item Features are extracted from \texttt{model.avgpool} (before the fully connected layer).
-  \item The L1-norm is computed across each feature dimension.
-  \item Only the top-$K$ units (based on L1-norm) are retained; all others are zero-masked.
-  \item Evaluation is conducted over all 512 units.
-  \item For each subset of active units, accuracy and cross-entropy loss are measured.
-  \item Turning points are identified:
-    \begin{itemize}
-      \item $n_0^{\text{acc}}$: Index where accuracy reaches maximum.
-      \item $n_0^{\text{loss}}$: Index where loss reaches minimum.
-    \end{itemize}
-  \item Highly active unit sets are defined as:
-    \begin{itemize}
-      \item $\mathcal{U}_0^{\text{acc}}$: Units ranked up to $n_0^{\text{acc}}$.
-      \item $\mathcal{U}_0^{\text{loss}}$: Units ranked up to $n_0^{\text{loss}}$.
-    \end{itemize}
-\end{itemize}
 
-
+- Features are extracted from `model.avgpool` (before the fully connected layer).
+- The L1-norm is computed across each feature dimension.
+- Only the top-K units (based on L1-norm) are retained; all others are zero-masked.
+- Evaluation is conducted over all 512 units.
+- For each subset of active units, accuracy and cross-entropy loss are measured.
+- Turning points are identified:
+  - **n₀ₐcc**: Index where accuracy reaches maximum.
+  - **n₀ₗₒₛₛ**: Index where loss reaches minimum.
+- Highly active unit sets are defined as:
+  - **U₀ₐcc**: Units ranked up to *n₀ₐcc*.
+  - **U₀ₗₒₛₛ**: Units ranked up to *n₀ₗₒₛₛ*.
 ## Visualizations
 Plots:
 Accuracy vs. Number of Units Activated
