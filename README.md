@@ -51,5 +51,14 @@ Baseline accuracy: shown with red dashed line
 Turning points: shown with vertical orange lines
 Output:
 rof_curve_turning_points.pdf
+## Baseline Analysis and ROF Evaluation
+
+This section evaluates the baseline ResNet-18 model on the ISIC dataset and analyzes the model’s internal representations using the ROF (Ranking of Features) method.
+
+After loading the pretrained baseline model, we extract the penultimate layer features from the test set. By ranking these units based on their L1-norm, we incrementally activate the top-k units and measure the model’s accuracy for each group (e.g., acc_00, acc_01, etc.). This process helps us understand which features contribute most to the model’s performance and how accuracy changes as more units are activated.
+
+The results for each group’s accuracy (acc_00, acc_01, ...) are saved and visualized. For a detailed breakdown of these results, please refer to the accompanying PDF file, which contains the accuracy curves and group-wise performance metrics.
+
+> **See:** [`rof_baseline_results.pdf`](./rof_baseline_results.pdf) for detailed accuracy plots and group analysis.
 ## Citation
 Zhao, Y., Zhang, H., & Hu, X. (2023). Role Taxonomy of Units in Deep Neural Networks. Department of Electronic Engineering, Tsinghua University.
