@@ -15,10 +15,7 @@ The authors propose categorizing units in a trained neural network by measuring 
   - Convert to tensor
 ## Model
 - Base model: `ResNet18`
-- Final fully connected (FC) layer modified:
-  ```python
-  model.fc = nn.Linear(model.fc.in_features, 10)
-  Device used: "mps" 
+- Final fully connected (FC) layer modified 
 ## Training
 Optimizer: Adam
 Loss function: CrossEntropyLoss
