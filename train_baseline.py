@@ -12,7 +12,6 @@ from torch.utils.data import DataLoader
 import torchvision.models as models
 from isic import get_transform, get_loader
 from isic import ISICDataset
-
 from utils import evaluate, get_y_p
 
 import random
