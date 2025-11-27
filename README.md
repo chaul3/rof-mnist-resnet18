@@ -3,7 +3,6 @@ This project performs Retrieval Of Function (ROF) analysis on the MNIST dataset 
 ## 🧾 Abstract
 
 This project reproduces key components of the paper **"Role Taxonomy of Units in Deep Neural Networks"** by Yang Zhao, Hao Zhang, and Xiuyuan Hu (Tsinghua University), which introduces a taxonomy of neural units based on their behavior in a novel *Retrieval-of-Function (ROF)* test. Since no code was released with the paper, this implementation is constructed from the written description alone.
-
 The authors propose categorizing units in a trained neural network by measuring their contribution to functional retrieval over both training and test sets. Units are ranked by their activation-based importance, and progressively reactivated in descending order to evaluate recovery of function (measured via classification accuracy and loss). This project implements that framework using a modified ResNet18 model trained on MNIST, and evaluates the role of each unit based on their ROF curves. Turning points in accuracy and loss are used to identify highly active units. The goal is to mirror the analysis proposed in the paper and make the methodology reproducible and testable in practice.
 
 ## Dataset
